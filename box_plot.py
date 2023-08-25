@@ -12,8 +12,8 @@ adult = pd.read_excel(
     usecols=[
         'Idade',
         'Anos de Estudo',
-        'Ganho de Investimento',
-        'Perca de Investimento',
+        'Ganho de Capital',
+        'Perca de Capital',
         'Carga Horária Semanal',
         'Renda',
     ],
@@ -33,15 +33,15 @@ axes[1].set_xlabel("Renda")
 axes[1].set_ylabel("Anos de Estudo")
 axes[1].set_title("Anos de Estudo por Renda")
 
-sns.boxplot(x='Renda', y='Ganho de Investimento', data=adult, ax=axes[2])
+sns.boxplot(x='Renda', y='Ganho de Capital', data=adult, ax=axes[2])
 axes[2].set_xlabel("Renda")
-axes[2].set_ylabel("Ganho de Investimento")
-axes[2].set_title("Anos de Educação por Renda")
+axes[2].set_ylabel("Ganho de Capital")
+axes[2].set_title("Ganho de Capita por Renda")
 
-sns.boxplot(x='Renda', y='Perca de Investimento', data=adult, ax=axes[3])
+sns.boxplot(x='Renda', y='Perca de Capital', data=adult, ax=axes[3])
 axes[3].set_xlabel("Renda")
-axes[3].set_ylabel("Perca de Investimento")
-axes[3].set_title("Perca de Investimento por Renda")
+axes[3].set_ylabel("Perca de Capital")
+axes[3].set_title("Perca de Capital por Renda")
 
 sns.boxplot(x='Renda', y='Carga Horária Semanal', data=adult, ax=axes[4])
 axes[4].set_xlabel("Renda")

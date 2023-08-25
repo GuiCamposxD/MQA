@@ -12,14 +12,14 @@ adult = pd.read_excel(
     usecols=[
         'Idade',
         'Anos de Estudo',
-        'Ganho de Investimento',
-        'Perca de Investimento',
+        'Ganho de Capital',
+        'Perca de Capital',
         'Carga Horária Semanal',
     ],
 )
 
 matrix_correlacao = adult.corr()
-plt.figure(figsize=(8, 6))
-sns.heatmap(matrix_correlacao, annot=True, cmap='coolwarm', vmin=-1, vmax=1)
+plt.figure(figsize=(5, 2))
+sns.heatmap(matrix_correlacao, annot=True, cmap='coolwarm', vmin=-1, vmax=1, linewidth=.5)
 plt.title('Matriz de Correlação')
 plt.show()
