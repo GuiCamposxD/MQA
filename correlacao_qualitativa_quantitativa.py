@@ -9,14 +9,14 @@ path = os.path.join(pre, fname)
 
 adult = pd.read_excel(path)
 
-adult['Sexo'] = adult['Sexo'].map({'Feminino': 0, 'Masculino': 1})
+adult['Renda'] = adult['Renda'].map({'<=50K': 0, '>50K': 1})
 
-variaveis_quantitativas = ['Idade', 'Anos de Estudo', 'Ganho de Capital', 'Perca de Capital', 'Carga Horária Semanal']
+variaveis_quantitativas = ['Idade', 'Anos de Estudo', 'Carga Horária Semanal']
 
 resultado_correlacao = []
 
 for var in variaveis_quantitativas:
-    correlacao = pointbiserialr(adult[var], adult['Sexo'])
+    correlacao = pointbiserialr(adult[var], adult['Renda'])
     resultado_correlacao.append((var, correlacao.correlation, correlacao.pvalue))
 
 variaveis = [resultado[0] for resultado in resultado_correlacao]
@@ -25,7 +25,7 @@ correlacoes = [resultado[1] for resultado in resultado_correlacao]
 plt.bar(variaveis, correlacoes)
 plt.xlabel('Variáveis Quantitativas')
 plt.ylabel('Correlação Point-Biserial')
-plt.title('Correlação entre Variáveis Quantitativas e Sexo')
+plt.title('Correlação entre Variáveis Quantitativas e Renda')
 plt.xticks(rotation=45)
 plt.tight_layout()
 
