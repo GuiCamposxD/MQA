@@ -22,7 +22,6 @@ adult = pd.read_excel(
 sns.set(style="whitegrid")
 fig, axes = plt.subplots(nrows=1, ncols=5, figsize=(18, 6))
 
-# Criar os box plots
 sns.boxplot(x='Renda', y='Idade', data=adult, ax=axes[0])
 axes[0].set_xlabel("Renda")
 axes[0].set_ylabel("Idade")
@@ -48,5 +47,5 @@ axes[4].set_xlabel("Renda")
 axes[4].set_ylabel("Carga Horária Semanal")
 axes[4].set_title("Carga Horária Semanal por Renda")
 
-plt.tight_layout()  # Ajusta o layout dos subplots
-plt.show()  # Mostrar o gráfico
+plt.tight_layout()
+plt.show()

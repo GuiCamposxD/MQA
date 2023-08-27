@@ -62,6 +62,5 @@ for i, coluna in enumerate(colunas_variaveis):
     ax.set_title(f'Comparação para {coluna}')
     ax.legend()
 
-# Ajustar o layout do subplot
 plt.tight_layout()
 plt.show()
