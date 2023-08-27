@@ -11,9 +11,9 @@ path = os.path.join(pre, fname)
 adult = pd.read_excel(path)
 amostra = adult['Idade']
 
-colunas_variaveis = ['Idade', 'Anos de Estudo', 'Ganho de Capital', 'Perca de Capital', 'Carga Horária Semanal']
+colunas_variaveis = ['Idade', 'Anos de Estudo', 'Carga Horária Semanal']
 
-num_linhas = 2
+num_linhas = 1
 num_colunas =  3
 
 fig, axes = plt.subplots(nrows=num_linhas, ncols=num_colunas, figsize=(12, 8))

@@ -10,7 +10,7 @@ path = os.path.join(pre, fname)
 
 adult = pd.read_excel(path)
 
-variaveis_quantitativas = ['Idade', 'Anos de Estudo', 'Ganho de Capital', 'Perca de Capital', 'Carga Horária Semanal']
+variaveis_quantitativas = ['Idade', 'Anos de Estudo', 'Carga Horária Semanal']
 
 adult_recortado = adult[variaveis_quantitativas]
 adult_recortado_com_constante = add_constant(adult_recortado)

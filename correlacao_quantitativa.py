@@ -12,8 +12,6 @@ adult = pd.read_excel(
     usecols=[
         'Idade',
         'Anos de Estudo',
-        'Ganho de Capital',
-        'Perca de Capital',
         'Carga Horária Semanal',
     ],
 )
