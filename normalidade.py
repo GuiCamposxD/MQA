@@ -11,29 +11,6 @@ path = os.path.join(pre, fname)
 adult = pd.read_excel(path)
 amostra = adult['Idade']
 
-# media_esperada = amostra.mean()
-# desvio_padrao_esperado = amostra.std()
-# resultado_teste = kstest(amostra, 'norm', args=(media_esperada, desvio_padrao_esperado))
-
-# print('Média Esperada: ', media_esperada)
-# print('Desvio Padrão: ', desvio_padrao_esperado)
-# print('Resultado: ', resultado_teste)
-
-# # valores_esperados = norm.rvs(loc=media_esperada, scale=desvio_padrao_esperado, size=len(amostra))
-
-# # Criar um gráfico para visualizar os valores observados e esperados
-# plt.figure(figsize=(10, 6))
-
-# plt.hist(amostra, bins=20, density=True, alpha=0.5, label='Valores Observados')
-# plt.hist(valores_esperados, bins=20, density=True, alpha=0.5, label='Valores Esperados')
-
-# plt.xlabel('Valores')
-# plt.ylabel('Frequência')
-# plt.title('Comparação entre Valores Observados e Esperados')
-# plt.legend()
-
-# plt.show()
-
 colunas_variaveis = ['Idade', 'Anos de Estudo', 'Ganho de Capital', 'Perca de Capital', 'Carga Horária Semanal']
 
 num_linhas = 2
