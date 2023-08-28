@@ -14,10 +14,12 @@ adult = pd.read_excel(
         'Anos de Estudo',
         'Carga Horária Semanal',
         'Renda',
+        'Sexo',
     ],
 )
 
 adult['Renda'] = adult['Renda'].map({'<=50K': 0, '>50K': 1})
+adult['Sexo'] = adult['Sexo'].map({'Feminino': 0, 'Masculino': 1})
 
 matrix_correlacao = adult.corr()
 plt.figure(figsize=(5, 2))

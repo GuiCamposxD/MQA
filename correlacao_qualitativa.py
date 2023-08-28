@@ -10,7 +10,7 @@ path = os.path.join(pre, fname)
 adult = pd.read_excel(path)
 
 tabela_contigencia_1 = pd.crosstab(adult['Renda'], adult['Sexo'])
-tabela_contigencia_2 = pd.crosstab(adult['Renda'], adult['Raça'])
+tabela_contigencia_2 = pd.crosstab(adult['Renda'], adult['Etnia'])
 
 chi2_1, p_1, dof_1, expected_1 = chi2_contingency(tabela_contigencia_1)
 chi2_2, p_2, dof_2, expected_2 = chi2_contingency(tabela_contigencia_2)
@@ -28,11 +28,10 @@ fig, axes = plt.subplots(1, 2, figsize=(15, 5))
 for i, (tabela_contigencia, title) in enumerate(
     zip(
         [percentage_table_1, percentage_table_2],
-        ['Renda vs Sexo', 'Renda vs Raça'],
+        ['Renda vs Sexo', 'Renda vs Etnia'],
     )):
         tabela_contigencia.plot(kind='bar', ax=axes[i])
         axes[i].set_ylabel('Frequência')
-        axes[i].set_title(f'{title}\n p-valor: {p_valor[i]:.5f}')
         axes[i].grid(axis='y')
 
 plt.tight_layout()
