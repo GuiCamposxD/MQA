@@ -34,4 +34,6 @@ print(f'Mediana: {mediana_carga_horaria_semanal}')
 print(f'Terceiro Quartil {terceiro_carga_horaria_semanal}')
 print()
 
+print('Teste')
+
 
