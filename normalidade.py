@@ -10,7 +10,7 @@ path = os.path.join(pre, fname)
 
 adult = pd.read_excel(path)
 
-variable_name = 'Carga Horária Semanal'
+variable_name = 'Idade'
 sample_data = adult[variable_name]
 
 ks_statistic, ks_p_value = stats.kstest(sample_data, 'norm')
