@@ -4,24 +4,25 @@ import seaborn as sns
 import os
 
 pre = os.path.dirname(os.path.realpath(__file__))
-fname = 'adult.xlsx'
+fname = 'data.xlsx'
 path = os.path.join(pre, fname)
 
-adult = pd.read_excel(
+data = pd.read_excel(
     path,
     usecols=[
-        'Idade',
-        'Anos de Estudo',
-        'Carga Horária Semanal',
-        'Renda',
+        'Idade na matrícula',
+        'Nota de Admissão',
+        'Média das Notas no 1ºSemestre',
+        'Média das Notas no 2ºSemestre',
+        'Taxa de desemprego',
+        'GDP',
         'Sexo',
     ],
 )
 
-adult['Renda'] = adult['Renda'].map({'<=50K': 0, '>50K': 1})
-adult['Sexo'] = adult['Sexo'].map({'Feminino': 0, 'Masculino': 1})
+data['Sexo'] = data['Sexo'].map({'Feminino': 0, 'Masculino': 1})
 
-matrix_correlacao = adult.corr()
+matrix_correlacao = data.corr()
 plt.figure(figsize=(5, 2))
 sns.heatmap(matrix_correlacao, annot=True, cmap='Greys', vmin=-1, vmax=1, linewidth=.5)
 plt.title('Matriz de Correlação')

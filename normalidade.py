@@ -5,30 +5,37 @@ import matplotlib.pyplot as plt
 import os
 
 pre = os.path.dirname(os.path.realpath(__file__))
-fname = 'adult.xlsx'
+fname = 'data.xlsx'
 path = os.path.join(pre, fname)
 
-adult = pd.read_excel(path)
+data = pd.read_excel(path)
 
-variable_name = 'Carga Horária Semanal'
-sample_data = adult[variable_name]
+variaveis = [
+    'Nota de Admissão',
+    'Idade na matrícula',
+    'Média das Notas no 1ºSemestre',
+    'Média das Notas no 2ºSemestre',
+    'Taxa de desemprego',
+    'GDP',
+]
 
-ks_statistic, ks_p_value = stats.kstest(sample_data, 'norm')
+fig, axs = plt.subplots(3, 2, figsize=(12, 10))
+fig.subplots_adjust(hspace=0.5)
 
-print("Teste de Kolmogorov-Smirnov para", variable_name)
-print("Estatística de teste:", ks_statistic)
-print("Valor p:", ks_p_value)
+for i, variavel in enumerate(variaveis):
+    dados = data[variavel].dropna()
+    
+    ks_stat, p_value = stats.kstest(dados, 'norm', (dados.mean(), dados.std()))
+    
+    axs[i // 2, i % 2].hist(dados, bins=30, density=True, alpha=0.6, color='b', label='Dados')
+    
+    xmin, xmax = min(dados), max(dados)
+    x = np.linspace(xmin, xmax, 100)
+    y = stats.norm.pdf(x, dados.mean(), dados.std())
+    axs[i // 2, i % 2].plot(x, y, 'r--', label='Distribuição Normal')
+    
+    axs[i // 2, i % 2].set_title(f'Teste KS para {variavel}\nKS p-value: {p_value:.4f}')
+    axs[i // 2, i % 2].legend()
 
-plt.figure(figsize=(10, 6))
-plt.hist(sample_data, bins=20, density=True, alpha=0.6, color='blue', label='Dados de amostra')
-plt.xlabel(variable_name)
-plt.ylabel('Densidade')
-plt.title('Histograma e Distribuição Teórica')
-plt.legend()
-
-x = np.linspace(sample_data.min(), sample_data.max(), 100)
-plt.plot(x, stats.norm.pdf(x, loc=sample_data.mean(), scale=sample_data.std()), color='red', label='Distribuição normal')
-plt.legend()
-
-plt.grid()
+plt.tight_layout()
 plt.show()

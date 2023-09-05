@@ -1,24 +1,29 @@
 import pandas as pd
 import matplotlib.pyplot as plt
 from statsmodels.stats.outliers_influence import variance_inflation_factor
-from statsmodels.tools.tools import add_constant
 import os
 
 pre = os.path.dirname(os.path.realpath(__file__))
-fname = 'adult.xlsx'
+fname = 'data.xlsx'
 path = os.path.join(pre, fname)
 
-adult = pd.read_excel(path)
+data = pd.read_excel(path)
 
-variaveis_quantitativas = ['Idade', 'Anos de Estudo', 'Carga Horária Semanal']
+variaveis = [
+    'Idade na matrícula',
+    'Nota de Admissão',
+    'Média das Notas no 1ºSemestre',
+    'Média das Notas no 2ºSemestre',
+    'Taxa de desemprego',
+    'GDP',
+]
 
-adult_recortado = adult[variaveis_quantitativas]
-adult_recortado_com_constante = add_constant(adult_recortado)
+data_recortado = data[variaveis]
 
 vif_data = pd.DataFrame()
-vif_data["feature"] = adult_recortado_com_constante.columns
+vif_data["feature"] = data_recortado.columns
 vif_data["VIF"] = [
-    variance_inflation_factor(adult_recortado_com_constante.values, i) for i in range(adult_recortado_com_constante.shape[1])
+    variance_inflation_factor(data_recortado.values, i) for i in range(data_recortado.shape[1])
 ]
 
 print(vif_data)
