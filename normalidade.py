@@ -24,7 +24,7 @@ for i, variavel in enumerate(variaveis):
     std = np.std(data[variavel], ddof=1)
     res = stats.kstest(data[variavel], cdf='norm', args=(media, std), N=len(data[variavel]))
     
-    limite_critico = 1.3581 / np.sqrt(len(data[variavel]))
+    limite_critico = 1.36 / np.sqrt(len(data[variavel]))
     if res.statistic > limite_critico:
         print('Como a estatística do teste se mostrou um valor maior que o limite critíco, a variável não se mostra proveniente de uma distribuição normal')
         print()
