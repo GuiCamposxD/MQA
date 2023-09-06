@@ -1,14 +1,25 @@
 import pandas as pd
 import os
 
-file_path = 'adult.xlsx'
-data = pd.read_excel(file_path)
+pre = os.path.dirname(os.path.realpath(__file__))
+fname = 'data.xlsx'
+path = os.path.join(pre, fname)
 
-contagem_valor = data['Etnia'].value_counts()
+data = pd.read_excel(path)
+
+contagem_valor = data['Curso'].value_counts()
+print(contagem_valor, '\n')
+
+contagem_valor = data['Ocupação Materna'].value_counts()
+print(contagem_valor, '\n')
+
+contagem_valor = data['Ocupação Paterna'].value_counts()
 print(contagem_valor, '\n')
 
 contagem_valor = data['Sexo'].value_counts()
 print(contagem_valor, '\n')
 
-contagem_valor = data['Renda'].value_counts()
+contagem_valor = data['Situação Da Graduação'].value_counts()
 print(contagem_valor, '\n')
+
+
