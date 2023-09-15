@@ -5,7 +5,7 @@ import matplotlib.pyplot as plt
 
 #caminho do arquivo
 pre = os.path.dirname(os.path.realpath(__file__))
-fname = 'Gastos-Academia.xlsx'
+fname = 'Gastos-Academia.xlsx' #mudar o nome do arquivo
 path = os.path.join(pre, fname)
 
 # Carregar os dados do Excel em um DataFrame do Pandas
@@ -29,11 +29,11 @@ Y_estimado = modelo.predict(X)
 print(modelo.summary())
 
 #plt.scatter(variavel eixo y, variável com valores reais ou valores estimados, cor, label da legenda)
-plt.scatter(df['periodo'], Y, color='black', label='Valores Reais')
-plt.scatter(df['periodo'], Y_estimado, color='red', label='Valores Estimados')
+plt.scatter(df['periodo'], Y, color='black', label='Valores Reais') #valores reais
+plt.scatter(df['periodo'], Y_estimado, color='red', label='Valores Estimados') #valores estimados
 
-plt.xlabel('Período')
-plt.ylabel('Gastos')
+plt.xlabel('Período') #variável de tempo
+plt.ylabel('Gastos') #variável dependente
 plt.title('Valores Reais vs. Valores Estimados')
 plt.legend()
 plt.show()
